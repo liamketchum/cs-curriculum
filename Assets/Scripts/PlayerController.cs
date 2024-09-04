@@ -5,13 +5,23 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public float xDirection
+    public float yDirection;
+    public float xDirection;
     public bool overworld;
-    public float xSpeed = 4;
-    private float xVector = xSpeed * xDirection;
-    private Rigidbody2D rb;
-        private void Start()
+    public float xSpeed;
+    public float ySpeed;
+    public float xVector;
+    public float yVector;
+    public Rigidbody2D rb;
+
+    private void Start()
     {
+        ySpeed = 4;
+        xSpeed = 4;
+        yDirection = 0;
+        xDirection = 0;
+        xVector = 0;
+        yVector = 0;
         GetComponentInChildren<TopDown_AnimatorController>().enabled = overworld;
         GetComponentInChildren<Platformer_AnimatorController>().enabled = !overworld; //what do you think ! means?
         
@@ -26,12 +36,14 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    //Update runs once per frame
     private void Update()
     {
-        float horizontal Input = Input.GetAxis("Horizontal");
-        xVector=1
-        Vector2 movement = new Vector2(1, 0f);
-        rb.velocity= 1
+        yDirection = Input.GetAxis("Vertical");
+        xDirection = Input.GetAxis("Horizontal");
+        xVector = xSpeed * xDirection * Time.deltaTime;
+        transform.Translate(new Vector3(xVector, yVector, 0));
+        yVector = ySpeed * yDirection * Time.deltaTime;
     }
     
     //for organization, put other built-in Unity functions here
