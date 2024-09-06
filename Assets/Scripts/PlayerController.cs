@@ -16,8 +16,8 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-        ySpeed = 4;
-        xSpeed = 4;
+        ySpeed = 5;
+        xSpeed = 5;
         yDirection = 0;
         xDirection = 0;
         xVector = 0;
